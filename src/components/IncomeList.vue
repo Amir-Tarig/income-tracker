@@ -1,6 +1,6 @@
 <template>
  <div class="income-list">
-      <Items v-for="data in state.income" :key="data.id" :income="data"/>
+      <Items @remove-item="removeItem" v-for="data in state.sortedIncome" :key="data.id" :income="data"/>
  </div>
 </template>
 
@@ -10,6 +10,15 @@ export default {
     components: {Items},
     props: {
         state: Object
+    },
+    setup(props,{emit}) {
+        function removeItem(id){
+            emit("remove-Item", id)
+        }
+
+        return {
+            removeItem
+        }
     }
 }
 </script>

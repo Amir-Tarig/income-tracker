@@ -1,7 +1,7 @@
 <template>
   <Header :totalIncome="state.totalIncome"/>
   <Form  @Handle-Data="handleData"/>
-  <Income-list :state='state' />
+  <Income-list @remove-item="removeItem" :state='state' />
 </template>
 
 <script>
@@ -21,7 +21,15 @@ export default {
             temp += state.income[i].value
           }) : "";
           return temp;
+        }),
+
+        sortedIncome: computed(() => {
+          let temp = []
+          let income = state.income.slice(0)
+          temp = income.sort((a,b) => b.date - a.date);
+          return temp
         })
+      
       })
 
       function handleData (data) {
@@ -34,11 +42,16 @@ export default {
            value: parseInt(data.value),
            date: newD.getTime()
          }]
-         console.log(state.income)
       }
+
+      function removeItem (id) {
+          state.income = state.income.filter(el => el.id != id)
+      }
+
       return {
         handleData,
-        state
+        state,
+        removeItem
       }
     }
 }

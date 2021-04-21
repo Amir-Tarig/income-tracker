@@ -39,23 +39,23 @@ export default {
 
 <style scoped>
 .form {
-    /* border: 1px solid red; */
-    width:70%;
+    width: 90%;
     margin: auto;
     position: relative;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
     top: 3em;
 }
 
 input {
     outline: none;
-    width: 30%;
+    width: 20rem;
     border-radius: 10px;
     border-top-left-radius: 0;
     border-bottom-right-radius: 0;
     display: block;
-    padding: .4em 1em;
+    padding: .8em 1em;
     appearance: none;
     border: none;
     box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4), -1px -1px 1px rgba(0, 0, 0, 0.4);
@@ -66,8 +66,36 @@ input {
 }
 
 #submit {
-    width: 15%;
+    width: 8rem;
     margin-left: 1em;
     outline: none;
+    border: none;
+    display: block;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, .2), -1px -1px 10px rgba(0, 0, 0, .2);
+}
+
+@media screen and (max-width: 1235px){
+    .form{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    input{
+        width: 60%;
+        margin-top: 1.2em;
+    }
+
+    #num{
+        margin-top: 1em;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .form{
+        width: fit-content;
+    }
+    input{
+        width: 100%;
+    }
 }
 </style>

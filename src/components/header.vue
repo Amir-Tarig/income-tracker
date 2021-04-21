@@ -19,12 +19,13 @@ export default {
     color: #f1faee;
     display: flex;
     justify-content: space-around;
+    padding: 1em 0;
 }
 
 .total-income{
     background: #606c38;
     padding: 10px 2em;
-    box-shadow: 1px 1px 2px rgba(0, 0, 0, .2), -1px -1px 2px rgba(0, 0, 0, .2);
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, .2), -1px -1px 10px rgba(0, 0, 0, .2);
 }
 
 .logo{

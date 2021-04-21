@@ -1,6 +1,6 @@
 <template>
   <div class="income-item">
-      <div class="removeItem">x</div>
+      <div class="removeItem" @click="removeItem">x</div>
       <div class="desc">{{income.desc}}</div>
       <div class="price">${{income.value}}</div>
       <div class="date">{{ formattedDate }}</div>
@@ -10,16 +10,20 @@
 <script>
 export default {
     props: { income: Object },
-    setup(props) {
-       
+    setup(props,{emit}) {
             let date = new Date(props.income.date)
             let day = date.getDate()
             let month = date.getMonth()
             let year = date.getFullYear()
-
             let formattedDate = day + '/' + month  + "/" + year;
 
-            return {formattedDate}
+            function  removeItem() {
+              emit("remove-item", props.income.id)
+            }
+              return {
+                formattedDate,
+                removeItem
+              }
     }
 }
 </script>
